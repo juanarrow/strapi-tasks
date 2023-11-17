@@ -70,6 +70,23 @@
       "relation": "oneToMany",
       "target": "api::assignment.assignment",
       "mappedBy": "user"
+    },
+    "picture": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "name": {
+      "type": "string"
+    },
+    "surname": {
+      "type": "string"
     }
   }
 }
