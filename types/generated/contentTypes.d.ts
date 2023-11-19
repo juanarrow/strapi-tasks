@@ -362,6 +362,135 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiAssignmentAssignment extends Schema.CollectionType {
+  collectionName: 'assignments';
+  info: {
+    singularName: 'assignment';
+    pluralName: 'assignments';
+    displayName: 'assignment';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    user: Attribute.Relation<
+      'api::assignment.assignment',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    issuedAt: Attribute.DateTime;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::assignment.assignment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::assignment.assignment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiDatoDato extends Schema.CollectionType {
+  collectionName: 'datoes';
+  info: {
+    singularName: 'dato';
+    pluralName: 'datoes';
+    displayName: 'dato';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    valorX: Attribute.Decimal;
+    valorY1: Attribute.Decimal;
+    valorY2: Attribute.Decimal;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::dato.dato', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::dato.dato', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiExtendedUserExtendedUser extends Schema.CollectionType {
+  collectionName: 'extended_users';
+  info: {
+    singularName: 'extended-user';
+    pluralName: 'extended-users';
+    displayName: 'extended_user';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    surname: Attribute.String;
+    nickname: Attribute.String;
+    user_id: Attribute.Relation<
+      'api::extended-user.extended-user',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    picture: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::extended-user.extended-user',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::extended-user.extended-user',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPruebaPrueba extends Schema.CollectionType {
+  collectionName: 'pruebas';
+  info: {
+    singularName: 'prueba';
+    pluralName: 'pruebas';
+    displayName: 'prueba';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    text: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::prueba.prueba',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::prueba.prueba',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -684,146 +813,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiAssignmentAssignment extends Schema.CollectionType {
-  collectionName: 'assignments';
-  info: {
-    singularName: 'assignment';
-    pluralName: 'assignments';
-    displayName: 'assignment';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    task: Attribute.Relation<
-      'api::assignment.assignment',
-      'manyToOne',
-      'api::task.task'
-    >;
-    user: Attribute.Relation<
-      'api::assignment.assignment',
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
-    issuedAt: Attribute.DateTime;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::assignment.assignment',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::assignment.assignment',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiExtendedUserExtendedUser extends Schema.CollectionType {
-  collectionName: 'extended_users';
-  info: {
-    singularName: 'extended-user';
-    pluralName: 'extended-users';
-    displayName: 'extended_user';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String;
-    surname: Attribute.String;
-    pircture: Attribute.Media;
-    nickname: Attribute.String;
-    user_id: Attribute.Relation<
-      'api::extended-user.extended-user',
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
-    picture: Attribute.Media;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::extended-user.extended-user',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::extended-user.extended-user',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiPruebaPrueba extends Schema.CollectionType {
-  collectionName: 'pruebas';
-  info: {
-    singularName: 'prueba';
-    pluralName: 'pruebas';
-    displayName: 'prueba';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    text: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::prueba.prueba',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::prueba.prueba',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiTaskTask extends Schema.CollectionType {
-  collectionName: 'tasks';
-  info: {
-    singularName: 'task';
-    pluralName: 'tasks';
-    displayName: 'task';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String;
-    assignments: Attribute.Relation<
-      'api::task.task',
-      'oneToMany',
-      'api::assignment.assignment'
-    >;
-    picture: Attribute.Media;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::task.task', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::task.task', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -834,16 +823,16 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::assignment.assignment': ApiAssignmentAssignment;
+      'api::dato.dato': ApiDatoDato;
+      'api::extended-user.extended-user': ApiExtendedUserExtendedUser;
+      'api::prueba.prueba': ApiPruebaPrueba;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::assignment.assignment': ApiAssignmentAssignment;
-      'api::extended-user.extended-user': ApiExtendedUserExtendedUser;
-      'api::prueba.prueba': ApiPruebaPrueba;
-      'api::task.task': ApiTaskTask;
     }
   }
 }
