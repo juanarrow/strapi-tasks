@@ -427,7 +427,7 @@ export interface ApiExtendedUserExtendedUser extends Schema.CollectionType {
   info: {
     singularName: 'extended-user';
     pluralName: 'extended-users';
-    displayName: 'extended_user';
+    displayName: 'extended-user';
     description: '';
   };
   options: {
